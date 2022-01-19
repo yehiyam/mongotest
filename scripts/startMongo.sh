@@ -1,5 +1,6 @@
 #!/bin/bash
-KEY_FILE=/tmp/mongo.keyfile
+# KEY_FILE=/tmp/mongo.keyfile
+KEY_FILE=$(mktemp)
 openssl rand -base64 756 > $KEY_FILE
 chown 999 $KEY_FILE
 chmod 400 $KEY_FILE
