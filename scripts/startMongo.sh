@@ -2,8 +2,8 @@
 # KEY_FILE=/tmp/mongo.keyfile
 KEY_FILE=$(mktemp)
 openssl rand -base64 756 > $KEY_FILE
-chown 999 $KEY_FILE
-chmod 400 $KEY_FILE
+sudo chown 999 $KEY_FILE
+sudo chmod 400 $KEY_FILE
 docker rm -f mongodb
 docker run -d --name mongodb \
       -p 27017:27017 \
