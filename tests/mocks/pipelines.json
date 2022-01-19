@@ -1,0 +1,657 @@
+[
+    {
+        "name": "flow1",
+        "kind": "batch",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "@flowInput.files.link"
+                ]
+            },
+            {
+                "nodeName": "yellow",
+                "algorithmName": "yellow-alg",
+                "input": [
+                    "@green"
+                ]
+            },
+            {
+                "nodeName": "black",
+                "algorithmName": "black-alg",
+                "input": [
+                    "@yellow"
+                ]
+            },
+            {
+                "nodeName": "white",
+                "algorithmName": "black-alg",
+                "input": [
+                    "test"
+                ]
+            }
+        ],
+        "flowInput": {
+            "files": {
+                "link": "links-1"
+            }
+        },
+        "priority": 5,
+        "options": {
+            "ttl": 3600,
+            "batchTolerance": 30,
+            "progressVerbosityLevel": "debug"
+        }
+    },
+    {
+        "name": "flow2",
+        "kind": "batch",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "#@flowInput.files.links"
+                ]
+            },
+            {
+                "nodeName": "yellow",
+                "algorithmName": "yellow-alg",
+                "input": [
+                    "@green"
+                ]
+            },
+            {
+                "nodeName": "black",
+                "algorithmName": "black-alg",
+                "input": [
+                    "@green",
+                    "@yellow"
+                ]
+            }
+        ],
+        "flowInput": {
+            "files": {
+                "links": [
+                    "links-1",
+                    "links-2",
+                    "links-3",
+                    "links-4",
+                    "links-5"
+                ]
+            }
+        },
+        "options": {
+            "batchTolerance": 30,
+            "progressVerbosityLevel": "debug"
+        },
+        "experimentName": "main"
+    },
+    {
+        "name": "flow3",
+        "kind": "batch",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "#@flowInput.files.links"
+                ]
+            },
+            {
+                "nodeName": "yellow",
+                "algorithmName": "yellow-alg",
+                "input": [
+                    "#@flowInput.files.links"
+                ]
+            },
+            {
+                "nodeName": "black",
+                "algorithmName": "black-alg",
+                "input": [
+                    "#@flowInput.files.links"
+                ]
+            }
+        ],
+        "flowInput": {
+            "files": {
+                "links": [
+                    "links-1",
+                    "links-2",
+                    "links-3",
+                    "links-4",
+                    "links-5",
+                    "links-6",
+                    "links-7",
+                    "links-8",
+                    "links-9",
+                    "links-10"
+                ]
+            }
+        },
+        "priority": 5,
+        "experimentName": "main",
+        "options": {
+            "ttl": 3600,
+            "batchTolerance": 30,
+            "progressVerbosityLevel": "debug"
+        }
+    },
+    {
+        "name": "flowInput",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "#@flowInput.files.links"
+                ]
+            },
+            {
+                "nodeName": "yellow",
+                "algorithmName": "yellow-alg",
+                "input": [
+                    "#@flowInput.files.links"
+                ]
+            },
+            {
+                "nodeName": "black",
+                "algorithmName": "black-alg",
+                "input": [
+                    "#@flowInput.files.links"
+                ]
+            }
+        ],
+        "flowInput": {
+            "files": {
+                "link": "links-1"
+            }
+        }
+    },
+    {
+        "name": "override-flowInput",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "@flowInput"
+                ]
+            },
+            {
+                "nodeName": "yellow",
+                "algorithmName": "yellow-alg",
+                "input": [
+                    "@flowInput"
+                ]
+            },
+            {
+                "nodeName": "black",
+                "algorithmName": "black-alg",
+                "input": [
+                    "@flowInput"
+                ]
+            }
+        ],
+        "flowInput": {
+            "inp": [
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ]
+        }
+    },
+    {
+        "name": "webhookFlow1",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "@flowInput.files.link"
+                ]
+            },
+            {
+                "nodeName": "yellow",
+                "algorithmName": "yellow-alg",
+                "input": [
+                    "@green"
+                ]
+            },
+            {
+                "nodeName": "black",
+                "algorithmName": "black-alg",
+                "input": [
+                    "@yellow"
+                ]
+            },
+            {
+                "nodeName": "white",
+                "algorithmName": "black-alg",
+                "input": [
+                    "test"
+                ]
+            }
+        ],
+        "flowInput": {
+            "files": {
+                "link": "links-1"
+            }
+        },
+        "webhooks": {
+            "progress": "http://my-webhook-server-1/webhook/progress",
+            "result": "http://my-webhook-server-1/webhook/result"
+        }
+    },
+    {
+        "name": "webhookFlow2",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "@flowInput.files.link"
+                ]
+            },
+            {
+                "nodeName": "yellow",
+                "algorithmName": "yellow-alg",
+                "input": [
+                    "@green"
+                ]
+            },
+            {
+                "nodeName": "black",
+                "algorithmName": "black-alg",
+                "input": [
+                    "@yellow"
+                ]
+            },
+            {
+                "nodeName": "white",
+                "algorithmName": "black-alg",
+                "input": [
+                    "test"
+                ]
+            }
+        ],
+        "flowInput": {
+            "files": {
+                "link": "links-1"
+            }
+        },
+        "webhooks": {
+            "progress": "http://my-webhook-server-2/webhook/progress",
+            "result": "http://my-webhook-server-2/webhook/result"
+        }
+    },
+    {
+        "name": "NodeNotExists",
+        "nodes": [
+            {
+                "nodeName": "A",
+                "algorithmName": "green-alg",
+                "input": []
+            },
+            {
+                "nodeName": "B",
+                "algorithmName": "green-alg",
+                "input": [
+                    "@C"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "cyclicNodes",
+        "nodes": [
+            {
+                "nodeName": "A",
+                "algorithmName": "green-alg",
+                "input": [
+                    "@B"
+                ]
+            },
+            {
+                "nodeName": "B",
+                "algorithmName": "green-alg",
+                "input": [
+                    "@A"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "trigger-cron-enabled",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "flowInput"
+                ]
+            }
+        ],
+        "triggers": {
+            "cron": {
+                "pattern": "20,40 * * * * 0,1,2",
+                "enabled": true
+            }
+        }
+    },
+    {
+        "name": "trigger-cron-disabled",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "flowInput"
+                ]
+            }
+        ],
+        "triggers": {
+            "cron": {
+                "pattern": "20,40 * * * * 0,1,2",
+                "enabled": false
+            }
+        }
+    },
+    {
+        "name": "trigger-no-cron",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "flowInput"
+                ]
+            }
+        ],
+        "triggers": {}
+    },
+    {
+        "name": "concurrentPipelinesReject",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "flowInput"
+                ]
+            }
+        ],
+        "options": {
+            "batchTolerance": 100,
+            "progressVerbosityLevel": "debug",
+            "ttl": 3600,
+            "concurrentPipelines": {
+                "amount": 2
+            }
+        }
+    },
+    {
+        "name": "concurrentPipelinesResolve",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "flowInput"
+                ]
+            }
+        ],
+        "options": {
+            "batchTolerance": 100,
+            "progressVerbosityLevel": "debug",
+            "ttl": 3600,
+            "concurrentPipelines": {
+                "amount": 2,
+                "rejectOnFailure": false
+            }
+        }
+    },
+    {
+        "name": "pipeInPipe-1",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "@flowInput.files.link"
+                ]
+            },
+            {
+                "nodeName": "yellow",
+                "algorithmName": "yellow-alg",
+                "input": [
+                    "@green"
+                ]
+            },
+            {
+                "nodeName": "black",
+                "algorithmName": "black-alg",
+                "input": [
+                    "@yellow"
+                ]
+            }
+        ],
+        "flowInput": {
+            "files": {
+                "link": "links-1"
+            }
+        }
+    },
+    {
+        "name": "pipeInPipe-2",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": []
+            },
+            {
+                "nodeName": "yellow",
+                "algorithmName": "yellow-alg",
+                "input": [
+                    {
+                        "first": "@green.data.result",
+                        "second": "Bla"
+                    }
+                ]
+            },
+            {
+                "nodeName": "black",
+                "algorithmName": "black-alg",
+                "input": [
+                    {
+                        "first": "@yellow",
+                        "second": "@yellow.path",
+                        "third": "bla"
+                    }
+                ]
+            },
+            {
+                "nodeName": "eval",
+                "algorithmName": "eval-alg",
+                "input": [
+                    {
+                        "first": "@yellow",
+                        "second": "@yellow.path",
+                        "third": "bla"
+                    }
+                ]
+            }
+        ],
+        "flowInput": {
+            "files": {
+                "xlink": "links-2"
+            },
+            "newFiles": {
+                "link": "links-1"
+            }
+        }
+    },
+    {
+        "name": "pipeInPipe-3",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": []
+            },
+            {
+                "nodeName": "yellow",
+                "algorithmName": "yellow-alg",
+                "input": []
+            }
+        ]
+    },
+    {
+        "name": "trigger-tree-1",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "@flowInput"
+                ]
+            }
+        ]
+    },
+    {
+        "name": "trigger-tree-2",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "@flowInput"
+                ]
+            }
+        ],
+        "triggers": {
+            "pipelines": [
+                "trigger-tree-1"
+            ]
+        }
+    },
+    {
+        "name": "trigger-tree-3",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "@flowInput"
+                ]
+            }
+        ],
+        "triggers": {
+            "pipelines": [
+                "trigger-tree-2"
+            ]
+        }
+    },
+    {
+        "name": "trigger-tree-4",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "@flowInput"
+                ]
+            }
+        ],
+        "triggers": {
+            "pipelines": [
+                "trigger-tree-3"
+            ]
+        }
+    },
+    {
+        "name": "types-check",
+        "nodes": [
+            {
+                "nodeName": "types-check",
+                "algorithmName": "types-check",
+                "input": []
+            }
+        ]
+    },
+    {
+        "name": "streaming-fail",
+        "kind": "stream",
+        "nodes": [
+            {
+                "nodeName": "A",
+                "algorithmName": "green-alg",
+                "input": []
+            },
+            {
+                "nodeName": "Z",
+                "algorithmName": "green-alg",
+                "input": []
+            }
+        ],
+        "streaming": {
+            "flows": {
+                "analyze": "A >> Z"
+            }
+        }
+    },
+    {
+        "name": "streaming-success",
+        "kind": "stream",
+        "nodes": [
+            {
+                "nodeName": "A",
+                "algorithmName": "stateful-alg",
+                "input": []
+            },
+            {
+                "nodeName": "Z",
+                "algorithmName": "green-alg",
+                "input": []
+            }
+        ],
+        "streaming": {
+            "flows": {
+                "analyze": "A >> Z"
+            }
+        }
+    },
+    {
+        "name": "stateful",
+        "kind": "batch",
+        "nodes": [
+            {
+                "nodeName": "one",
+                "algorithmName": "stateful-alg",
+                "input": []
+            }
+        ]
+    },
+    {
+        "name": "options",
+        "nodes": [
+            {
+                "nodeName": "green",
+                "algorithmName": "green-alg",
+                "input": [
+                    "flowInput"
+                ]
+            }
+        ],
+        "options": {
+            "batchTolerance": 45,
+            "progressVerbosityLevel": "debug",
+            "ttl": 85900
+        }
+    }
+]
