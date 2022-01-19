@@ -38,11 +38,19 @@ jobs:
       - run: ./scripts/beforeInstall.sh
       - run: |
           pushd .
+          cd core/algorithm-builder
+          npm ci
+          popd
+          pushd .
           cd core/api-server
           npm ci
           popd
       - name: test
         run: |
+          pushd .
+          cd core/algorithm-builder
+          npm run test
+          popd
           pushd .
           cd core/api-server
           npm run test

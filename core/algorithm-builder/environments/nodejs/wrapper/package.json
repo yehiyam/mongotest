@@ -1,0 +1,16 @@
+{
+  "name": "nodejs-env",
+  "version": "1.2.1",
+  "description": "nodejs environment for hkube auto build",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app",
+    "build": "./dockerfile/build.sh nodejs-env"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@hkube/nodejs-wrapper": "^2.0.61"
+  },
+  "devDependencies": {}
+}

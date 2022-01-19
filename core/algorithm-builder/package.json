@@ -1,0 +1,51 @@
+{
+  "name": "algorithm-builder",
+  "version": "2.2.10",
+  "description": "build algorithm with hkube worker connectivity",
+  "author": "Hkube",
+  "license": "ISC",
+  "scripts": {
+    "lint": "./node_modules/eslint/bin/eslint.js .",
+    "test": "NODE_ENV=test ./node_modules/mocha/bin/_mocha tests --colors --recursive --timeout=10000 --exit",
+    "test:cov": "NODE_ENV=test ./node_modules/nyc/bin/nyc.js --exclude=tests --reporter=html --reporter=text --reporter=lcov mocha tests --colors --recursive --timeout=10000 --exit",
+    "coverage": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
+    "start": "node app",
+    "build": "./dockerfile/build.sh algorithm-builder",
+    "build-env-python": "./lib/builds/build-base-image.sh --env python",
+    "build-env-nodejs": "./lib/builds/build-base-image.sh --env nodejs",
+    "build-algorithm": "./lib/builds/build-algorithm-image-docker.sh",
+    "download-python-packages": "./dockerfile/get-deps-python.sh",
+    "download-nodejs-packages": "./dockerfile/get-deps-nodejs.sh",
+    "download-java-packages": "./dockerfile/get-deps-java.sh"
+  },
+  "dependencies": {
+    "@hkube/config": "^2.0.11",
+    "@hkube/consts": "^1.0.31",
+    "@hkube/db": "^2.0.2",
+    "@hkube/etcd": "^5.1.2",
+    "@hkube/kubernetes-client": "^1.0.33",
+    "@hkube/logger": "^2.0.2",
+    "@hkube/storage-manager": "^2.0.32",
+    "adm-zip": "^0.4.13",
+    "fs-extra": "^8.1.0",
+    "git-clone": "^0.1.0",
+    "js-yaml": "^3.13.1",
+    "moment": "^2.24.0",
+    "targz": "^1.0.1",
+    "yargs": "^15.0.2"
+  },
+  "devDependencies": {
+    "@hkube/uid": "^1.0.4",
+    "chai": "^4.2.0",
+    "coveralls": "^3.0.9",
+    "eslint": "^6.7.2",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-chai-friendly": "^0.5.0",
+    "eslint-plugin-import": "^2.19.1",
+    "express": "^4.17.1",
+    "mocha": "^6.2.2",
+    "mockery": "^2.1.0",
+    "nyc": "^14.1.1",
+    "sinon": "^7.5.0"
+  }
+}
