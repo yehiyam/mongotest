@@ -37,7 +37,10 @@ jobs:
           node-version: 14.x
       - run: ./scripts/beforeInstall.sh
       - run: |
+          pushd .
+          cd core/api-server
           npm ci
+          popd
       - name: test
         run: |
           pushd .
