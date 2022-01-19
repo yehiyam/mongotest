@@ -40,4 +40,7 @@ jobs:
           npm ci
       - name: test
         run: |
+          pushd .
+          cd core/api-server
           npm run test
+          popd
