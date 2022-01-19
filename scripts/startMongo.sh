@@ -22,7 +22,7 @@ while [ "$INIT" != "1" ]; do
   fi
   echo "Waiting for mongo to be ready... ($COUNT/$MAX_RETRY)"
   sleep 1
-  INIT=$(docker exec -it mongodb sh -c 'echo "rs.initiate().ok || rs.status().ok"|mongo -u tester -p password --quiet' | tr -d '\r')
+  INIT=$(docker exec mongodb sh -c 'echo "rs.initiate().ok || rs.status().ok"|mongo -u tester -p password --quiet' | tr -d '\r')
   COUNT=$((COUNT+1))
 done
 echo "Mongo is ready!"
